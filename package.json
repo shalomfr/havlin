@@ -1,0 +1,10 @@
+{
+  "name": "rayzi-havlin",
+  "version": "1.0.0",
+  "description": "Rayzi Havlin Photography Website",
+  "scripts": {
+    "start": "npx serve .",
+    "build": "echo 'Static site - no build needed'"
+  }
+}
+

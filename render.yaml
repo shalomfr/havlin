@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: rayzi-havlin
+    env: static
+    buildCommand: ""
+    staticPublishPath: ./
+
