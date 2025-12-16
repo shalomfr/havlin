@@ -3,117 +3,330 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>רייזי הבלין | צילום מקצועי</title>
+    <title>רייזי הבלין | צילום שלוכד נשמות</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Heebo:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Assistant:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Cursor follower -->
-    <div class="cursor-glow"></div>
+    <!-- Magical Particles -->
+    <canvas id="particles"></canvas>
     
-    <!-- Loading screen -->
-    <div class="loader">
-        <div class="loader-content">
-            <div class="loader-logo">ר</div>
-            <div class="loader-text">רייזי הבלין</div>
-            <div class="loader-bar"><span></span></div>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-inner">
+            <div class="preloader-circle"></div>
+            <div class="preloader-circle"></div>
+            <div class="preloader-circle"></div>
+            <div class="preloader-text">
+                <span>ר</span><span>י</span><span>י</span><span>ז</span><span>י</span>
+            </div>
         </div>
     </div>
 
     <!-- Navigation -->
-    <nav class="nav">
-        <div class="nav-logo">
-            <span class="logo-text">רייזי הבלין</span>
-            <span class="logo-sub">צילום מקצועי</span>
+    <header class="header">
+        <nav class="nav">
+            <a href="#" class="logo">
+                <span class="logo-icon">ר</span>
+                <div class="logo-text">
+                    <span>רייזי הבלין</span>
+                    <small>צילום שלוכד נשמות</small>
+                </div>
+            </a>
+            <div class="nav-links">
+                <a href="#work" class="nav-link" data-text="עבודות">עבודות</a>
+                <a href="#about" class="nav-link" data-text="אודות">אודות</a>
+                <a href="#services" class="nav-link" data-text="שירותים">שירותים</a>
+                <a href="#contact" class="nav-link" data-text="צור קשר">צור קשר</a>
+            </div>
+            <button class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-bg"></div>
+        <div class="mobile-menu-content">
+            <a href="#work" class="mobile-link">עבודות</a>
+            <a href="#about" class="mobile-link">אודות</a>
+            <a href="#services" class="mobile-link">שירותים</a>
+            <a href="#contact" class="mobile-link">צור קשר</a>
         </div>
-        <div class="nav-toggle" id="navToggle">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <ul class="nav-menu" id="navMenu">
-            <li><a href="#home" class="nav-link active">בית</a></li>
-            <li><a href="#about" class="nav-link">אודות</a></li>
-            <li><a href="#services" class="nav-link">שירותים</a></li>
-            <li><a href="#gallery" class="nav-link">גלריה</a></li>
-            <li><a href="#contact" class="nav-link">צור קשר</a></li>
-        </ul>
-    </nav>
+    </div>
 
     <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-bg">
-            <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?w=1920&q=80" alt="Hero Background" class="hero-image">
+    <section class="hero" id="hero">
+        <div class="hero-media">
+            <div class="hero-slider">
+                <div class="slide active" style="--bg: url('https://images.unsplash.com/photo-1519689680058-324335c77eba?w=1920&q=80')"></div>
+                <div class="slide" style="--bg: url('https://images.unsplash.com/photo-1544126592-807ade215a0b?w=1920&q=80')"></div>
+                <div class="slide" style="--bg: url('https://images.unsplash.com/photo-1609220136736-443140cffec6?w=1920&q=80')"></div>
+            </div>
             <div class="hero-overlay"></div>
-            <div class="hero-grain"></div>
         </div>
+        
         <div class="hero-content">
-            <div class="hero-text">
-                <span class="hero-intro reveal-text">ברוכים הבאים לעולם של</span>
-                <h1 class="hero-title">
-                    <span class="title-line reveal-text" data-delay="0.2">רייזי</span>
-                    <span class="title-line reveal-text" data-delay="0.4">הבלין</span>
-                </h1>
-                <p class="hero-subtitle reveal-text" data-delay="0.6">לוכדת רגעים, יוצרת זכרונות</p>
-                <div class="hero-cta reveal-text" data-delay="0.8">
-                    <a href="#gallery" class="btn btn-primary">
-                        <span>גלו את העבודות שלי</span>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </a>
+            <div class="hero-tag">
+                <span class="line"></span>
+                <span>צלמת מקצועית</span>
+            </div>
+            <h1 class="hero-title">
+                <div class="title-mask">
+                    <span class="word">כל</span>
+                </div>
+                <div class="title-mask">
+                    <span class="word">רגע</span>
+                </div>
+                <div class="title-mask">
+                    <span class="word highlight">הוא</span>
+                </div>
+                <div class="title-mask">
+                    <span class="word highlight">נצח</span>
+                </div>
+            </h1>
+            <p class="hero-subtitle">
+                לוכדת את הרגעים הכי יקרים שלכם ומהפכת אותם לאמנות
+            </p>
+            <a href="#work" class="hero-btn">
+                <span class="btn-text">גלו את הקסם</span>
+                <span class="btn-icon">
+                    <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </span>
+            </a>
+        </div>
+
+        <div class="hero-scroll">
+            <div class="scroll-indicator">
+                <span class="scroll-text">גללו</span>
+                <div class="scroll-line">
+                    <div class="scroll-dot"></div>
                 </div>
             </div>
-            <div class="hero-scroll">
-                <span>גלול למטה</span>
-                <div class="scroll-line"></div>
-            </div>
         </div>
-        <div class="hero-shapes">
-            <div class="shape shape-1"></div>
-            <div class="shape shape-2"></div>
-            <div class="shape shape-3"></div>
+
+        <div class="hero-social">
+            <a href="#" class="social-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z"/></svg>
+            </a>
+            <a href="https://wa.me/972533133254" class="social-icon">
+                <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+            </a>
+        </div>
+
+        <div class="slide-counter">
+            <span class="current">01</span>
+            <span class="separator">/</span>
+            <span class="total">03</span>
+        </div>
+    </section>
+
+    <!-- Marquee -->
+    <div class="marquee">
+        <div class="marquee-track">
+            <span>ניו בורן ✦</span>
+            <span>משפחה ✦</span>
+            <span>ילדים ✦</span>
+            <span>מזון ✦</span>
+            <span>עסקי ✦</span>
+            <span>חלאקה ✦</span>
+            <span>ניו בורן ✦</span>
+            <span>משפחה ✦</span>
+            <span>ילדים ✦</span>
+            <span>מזון ✦</span>
+            <span>עסקי ✦</span>
+            <span>חלאקה ✦</span>
+        </div>
+    </div>
+
+    <!-- Work Section -->
+    <section class="work" id="work">
+        <div class="section-header">
+            <span class="section-number">01</span>
+            <h2 class="section-title" data-parallax>
+                <span>הגלריה</span>
+            </h2>
+        </div>
+
+        <div class="gallery-container">
+            <div class="gallery-filters">
+                <button class="filter-btn active" data-filter="all">הכל</button>
+                <button class="filter-btn" data-filter="newborn">ניו בורן</button>
+                <button class="filter-btn" data-filter="family">משפחה</button>
+                <button class="filter-btn" data-filter="food">מזון</button>
+            </div>
+
+            <div class="gallery-grid">
+                <article class="gallery-item" data-category="newborn">
+                    <div class="item-media">
+                        <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?w=800&q=80" alt="ניו בורן">
+                        <div class="item-overlay">
+                            <span class="item-category">ניו בורן</span>
+                            <h3 class="item-title">חיים חדשים</h3>
+                            <div class="item-icon">
+                                <svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="gallery-item large" data-category="family">
+                    <div class="item-media">
+                        <img src="https://images.unsplash.com/photo-1609220136736-443140cffec6?w=1200&q=80" alt="משפחה">
+                        <div class="item-overlay">
+                            <span class="item-category">משפחה</span>
+                            <h3 class="item-title">אהבה משפחתית</h3>
+                            <div class="item-icon">
+                                <svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="gallery-item" data-category="newborn">
+                    <div class="item-media">
+                        <img src="https://images.unsplash.com/photo-1544126592-807ade215a0b?w=800&q=80" alt="ניו בורן">
+                        <div class="item-overlay">
+                            <span class="item-category">ניו בורן</span>
+                            <h3 class="item-title">שלווה</h3>
+                            <div class="item-icon">
+                                <svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="gallery-item" data-category="food">
+                    <div class="item-media">
+                        <img src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=800&q=80" alt="מזון">
+                        <div class="item-overlay">
+                            <span class="item-category">מזון</span>
+                            <h3 class="item-title">טעמים</h3>
+                            <div class="item-icon">
+                                <svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="gallery-item tall" data-category="family">
+                    <div class="item-media">
+                        <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=800&q=80" alt="משפחה">
+                        <div class="item-overlay">
+                            <span class="item-category">משפחה</span>
+                            <h3 class="item-title">רגעים יחד</h3>
+                            <div class="item-icon">
+                                <svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="gallery-item" data-category="food">
+                    <div class="item-media">
+                        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80" alt="מזון">
+                        <div class="item-overlay">
+                            <span class="item-category">מזון</span>
+                            <h3 class="item-title">אומנות קולינרית</h3>
+                            <div class="item-icon">
+                                <svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="gallery-item" data-category="newborn">
+                    <div class="item-media">
+                        <img src="https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=800&q=80" alt="ניו בורן">
+                        <div class="item-overlay">
+                            <span class="item-category">ניו בורן</span>
+                            <h3 class="item-title">מתנה קטנה</h3>
+                            <div class="item-icon">
+                                <svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="gallery-item wide" data-category="food">
+                    <div class="item-media">
+                        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=1200&q=80" alt="מזון">
+                        <div class="item-overlay">
+                            <span class="item-category">מזון</span>
+                            <h3 class="item-title">פיתוי</h3>
+                            <div class="item-icon">
+                                <svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
         </div>
     </section>
 
     <!-- About Section -->
     <section class="about" id="about">
-        <div class="container">
-            <div class="about-grid">
-                <div class="about-image">
-                    <div class="image-frame">
-                        <img src="https://images.unsplash.com/photo-1554151228-14d9def656e4?w=600&q=80" alt="רייזי הבלין - צלמת מקצועית" class="about-photo">
-                        <div class="frame-decoration"></div>
-                    </div>
+        <div class="about-bg">
+            <div class="floating-shapes">
+                <div class="shape"></div>
+                <div class="shape"></div>
+                <div class="shape"></div>
+            </div>
+        </div>
+        
+        <div class="about-container">
+            <div class="about-image">
+                <div class="image-wrapper" data-parallax-img>
+                    <img src="https://images.unsplash.com/photo-1554151228-14d9def656e4?w=800&q=80" alt="רייזי הבלין">
+                    <div class="image-frame"></div>
                 </div>
-                <div class="about-content">
-                    <span class="section-tag">הסיפור שלי</span>
-                    <h2 class="section-title">אודות רייזי הבלין</h2>
-                    <div class="about-text">
-                        <p>
-                            צילום הוא לא רק עבודה עבורי - זו דרך חיים, תשוקה שנולדתי איתה. 
-                            כל תמונה שאני מצלמת היא סיפור, רגש, זיכרון שנשמר לנצח.
-                        </p>
-                        <p>
-                            אני מתמחה בצילומי ניו בורן, משפחה, ילדים, אירועים ועסקים. 
-                            עם שנים של ניסיון ואהבה אמיתית למקצוע, אני מבטיחה לכם חוויה מיוחדת ותמונות שתוכלו להתגאות בהן.
-                        </p>
+                <div class="experience-badge">
+                    <span class="badge-number">8+</span>
+                    <span class="badge-text">שנות<br>ניסיון</span>
+                </div>
+            </div>
+            
+            <div class="about-content">
+                <span class="section-number">02</span>
+                <h2 class="section-title">
+                    <span>הסיפור</span>
+                    <span class="outline">שלי</span>
+                </h2>
+                
+                <div class="about-text">
+                    <p class="lead">
+                        אני רייזי, וצילום הוא לא רק מה שאני עושה - זה מי שאני.
+                    </p>
+                    <p>
+                        כל תמונה שאני מצלמת היא חלון לרגע שלא יחזור. אני מאמינה שבכל פריים מסתתר סיפור, 
+                        ואני כאן כדי לספר אותו בצורה הכי יפה שיש.
+                    </p>
+                    <p>
+                        עם למעלה מ-8 שנות ניסיון ואהבה אמיתית למקצוע, אני מתמחה בצילומי ניו בורן, 
+                        משפחה, ילדים, מזון ועסקים. כל צילום הוא חוויה אישית ומותאמת.
+                    </p>
+                </div>
+
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="500">0</span>
+                        <span class="stat-label">לקוחות מרוצים</span>
                     </div>
-                    <div class="about-stats">
-                        <div class="stat">
-                            <span class="stat-number" data-count="500">0</span>
-                            <span class="stat-label">לקוחות מרוצים</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number" data-count="8">0</span>
-                            <span class="stat-label">שנות ניסיון</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number" data-count="1000">0</span>
-                            <span class="stat-label">צילומים</span>
-                        </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="1000">0</span>
+                        <span class="stat-label">צילומים</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="100">0</span>
+                        <span class="stat-label">% התלהבות</span>
                     </div>
                 </div>
             </div>
@@ -122,297 +335,215 @@
 
     <!-- Services Section -->
     <section class="services" id="services">
-        <div class="services-bg"></div>
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">מה אני מציעה</span>
-                <h2 class="section-title">השירותים שלי</h2>
-            </div>
-            <div class="services-grid">
-                <div class="service-card" data-service="newborn">
-                    <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?w=400&q=80" alt="ניו בורן">
+        <div class="section-header centered">
+            <span class="section-number">03</span>
+            <h2 class="section-title">
+                <span>השירותים</span>
+            </h2>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card" data-tilt>
+                <div class="card-bg"></div>
+                <div class="card-content">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 64 64"><circle cx="32" cy="20" r="12" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 52c0-8.837 7.163-16 16-16s16 7.163 16 16" fill="none" stroke="currentColor" stroke-width="2"/></svg>
                     </div>
                     <h3 class="card-title">ניו בורן</h3>
-                    <p class="card-text">צילומי תינוקות חדשים בסטודיו מאובזר עם אביזרים מרהיבים</p>
-                    <div class="card-hover"></div>
+                    <p class="card-text">צילומי תינוקות חדשים בסטודיו מאובזר עם אביזרים מרהיבים ואווירה קסומה</p>
+                    <span class="card-number">01</span>
                 </div>
-                <div class="service-card" data-service="family">
-                    <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1609220136736-443140cffec6?w=400&q=80" alt="ילדים ומשפחה">
+            </div>
+
+            <div class="service-card" data-tilt>
+                <div class="card-bg"></div>
+                <div class="card-content">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 64 64"><circle cx="20" cy="18" r="8" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="44" cy="18" r="8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 52c0-6.627 5.373-12 12-12M56 52c0-6.627-5.373-12-12-12" fill="none" stroke="currentColor" stroke-width="2"/></svg>
                     </div>
-                    <h3 class="card-title">ילדים ומשפחה</h3>
+                    <h3 class="card-title">משפחה וילדים</h3>
                     <p class="card-text">רגעים משפחתיים אמיתיים ומרגשים שיישארו לנצח</p>
-                    <div class="card-hover"></div>
+                    <span class="card-number">02</span>
                 </div>
-                <div class="service-card" data-service="food">
-                    <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=400&q=80" alt="צילומי מזון">
+            </div>
+
+            <div class="service-card" data-tilt>
+                <div class="card-bg"></div>
+                <div class="card-content">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 64 64"><ellipse cx="32" cy="40" rx="24" ry="12" fill="none" stroke="currentColor" stroke-width="2"/><path d="M32 8v12M24 12l8 8 8-8" fill="none" stroke="currentColor" stroke-width="2"/></svg>
                     </div>
                     <h3 class="card-title">צילומי מזון</h3>
-                    <p class="card-text">צילומים שיגרמו ללקוחות שלכם להתאהב במנות שלכם</p>
-                    <div class="card-hover"></div>
+                    <p class="card-text">צילומים שיגרמו ללקוחות שלכם להתאהב במנות</p>
+                    <span class="card-number">03</span>
                 </div>
-                <div class="service-card" data-service="business">
-                    <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=400&q=80" alt="צילום עסקי">
+            </div>
+
+            <div class="service-card" data-tilt>
+                <div class="card-bg"></div>
+                <div class="card-content">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 64 64"><rect x="8" y="16" width="48" height="36" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="32" cy="34" r="10" fill="none" stroke="currentColor" stroke-width="2"/></svg>
                     </div>
                     <h3 class="card-title">צילום עסקי</h3>
                     <p class="card-text">תדמית מקצועית שתבליט את העסק שלכם</p>
-                    <div class="card-hover"></div>
-                </div>
-                <div class="service-card" data-service="chalake">
-                    <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=400&q=80" alt="צילומי חלאקה">
-                    </div>
-                    <h3 class="card-title">צילומי חלאקה</h3>
-                    <p class="card-text">תיעוד הרגע המיוחד של התספורת הראשונה</p>
-                    <div class="card-hover"></div>
-                </div>
-                <div class="service-card" data-service="albums">
-                    <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80" alt="אלבומים דיגיטליים">
-                    </div>
-                    <h3 class="card-title">אלבומים דיגיטליים</h3>
-                    <p class="card-text">אלבומים מעוצבים ומרהיבים לשמירת הזכרונות</p>
-                    <div class="card-hover"></div>
+                    <span class="card-number">04</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Gallery Section -->
-    <section class="gallery" id="gallery">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">העבודות שלי</span>
-                <h2 class="section-title">גלריה</h2>
-            </div>
-            <div class="gallery-filter">
-                <button class="filter-btn active" data-filter="all">הכל</button>
-                <button class="filter-btn" data-filter="newborn">ניו בורן</button>
-                <button class="filter-btn" data-filter="family">משפחה</button>
-                <button class="filter-btn" data-filter="food">מזון</button>
-                <button class="filter-btn" data-filter="business">עסקי</button>
-            </div>
-            <div class="gallery-grid">
-                <div class="gallery-item" data-category="newborn">
-                    <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?w=600&q=80" alt="צילום ניו בורן">
-                    <div class="gallery-overlay">
-                        <span class="gallery-category">ניו בורן</span>
-                    </div>
-                </div>
-                <div class="gallery-item tall" data-category="family">
-                    <img src="https://images.unsplash.com/photo-1609220136736-443140cffec6?w=600&q=80" alt="צילום משפחה">
-                    <div class="gallery-overlay">
-                        <span class="gallery-category">משפחה</span>
-                    </div>
-                </div>
-                <div class="gallery-item" data-category="food">
-                    <img src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=600&q=80" alt="צילום מזון">
-                    <div class="gallery-overlay">
-                        <span class="gallery-category">מזון</span>
-                    </div>
-                </div>
-                <div class="gallery-item wide" data-category="newborn">
-                    <img src="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=800&q=80" alt="צילום ניו בורן">
-                    <div class="gallery-overlay">
-                        <span class="gallery-category">ניו בורן</span>
-                    </div>
-                </div>
-                <div class="gallery-item" data-category="business">
-                    <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=600&q=80" alt="צילום עסקי">
-                    <div class="gallery-overlay">
-                        <span class="gallery-category">עסקי</span>
-                    </div>
-                </div>
-                <div class="gallery-item tall" data-category="newborn">
-                    <img src="https://images.unsplash.com/photo-1544126592-807ade215a0b?w=600&q=80" alt="צילום ניו בורן">
-                    <div class="gallery-overlay">
-                        <span class="gallery-category">ניו בורן</span>
-                    </div>
-                </div>
-                <div class="gallery-item" data-category="family">
-                    <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=600&q=80" alt="צילום משפחה">
-                    <div class="gallery-overlay">
-                        <span class="gallery-category">משפחה</span>
-                    </div>
-                </div>
-                <div class="gallery-item wide" data-category="food">
-                    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80" alt="צילום מזון">
-                    <div class="gallery-overlay">
-                        <span class="gallery-category">מזון</span>
-                    </div>
-                </div>
-                <div class="gallery-item" data-category="business">
-                    <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=80" alt="צילום עסקי">
-                    <div class="gallery-overlay">
-                        <span class="gallery-category">עסקי</span>
-                    </div>
-                </div>
-                <div class="gallery-item" data-category="family">
-                    <img src="https://images.unsplash.com/photo-1478061653917-455ba7f4a541?w=600&q=80" alt="צילום ילדים">
-                    <div class="gallery-overlay">
-                        <span class="gallery-category">משפחה</span>
-                    </div>
-                </div>
-                <div class="gallery-item tall" data-category="food">
-                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&q=80" alt="צילום מזון">
-                    <div class="gallery-overlay">
-                        <span class="gallery-category">מזון</span>
-                    </div>
-                </div>
-                <div class="gallery-item" data-category="newborn">
-                    <img src="https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=600&q=80" alt="צילום ניו בורן">
-                    <div class="gallery-overlay">
-                        <span class="gallery-category">ניו בורן</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
+    <!-- Testimonials -->
     <section class="testimonials">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">מה אומרים עליי</span>
-                <h2 class="section-title">המלצות</h2>
-            </div>
-            <div class="testimonials-slider">
-                <div class="testimonial-card active">
-                    <div class="testimonial-content">
-                        <div class="quote-icon">"</div>
-                        <p class="testimonial-text">רייזי הפכה את הרגעים הכי יפים של המשפחה שלנו לתמונות מושלמות. היא מקצוענית אמיתית עם עין לפרטים ולב חם.</p>
-                        <div class="testimonial-author">
-                            <span class="author-name">שרה כהן</span>
-                            <span class="author-role">צילומי משפחה</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <div class="quote-icon">"</div>
-                        <p class="testimonial-text">התינוקת שלנו הייתה בת שבועיים והתמונות יצאו מדהימות. רייזי סבלנית, מקצועית ויודעת בדיוק איך לטפל בתינוקות.</p>
-                        <div class="testimonial-author">
-                            <span class="author-name">מיכל לוי</span>
-                            <span class="author-role">צילומי ניו בורן</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <div class="quote-icon">"</div>
-                        <p class="testimonial-text">הצילומים של המסעדה שלנו הביאו אלינו כל כך הרבה לקוחות חדשים! רייזי יודעת לגרום לאוכל להיראות בלתי יאמן.</p>
-                        <div class="testimonial-author">
-                            <span class="author-name">דוד ישראלי</span>
-                            <span class="author-role">צילומי מזון</span>
-                        </div>
-                    </div>
+        <div class="testimonials-bg">
+            <span class="quote-mark">"</span>
+        </div>
+        
+        <div class="testimonials-slider" id="testimonialSlider">
+            <div class="testimonial active">
+                <p class="testimonial-text">
+                    רייזי הפכה את הרגעים הכי יפים של המשפחה שלנו לתמונות מושלמות. 
+                    היא מקצוענית אמיתית עם עין לפרטים ולב חם. ממליצה בחום!
+                </p>
+                <div class="testimonial-author">
+                    <span class="author-name">שרה כהן</span>
+                    <span class="author-role">צילומי משפחה</span>
                 </div>
             </div>
-            <div class="testimonials-nav">
-                <button class="nav-dot active" data-index="0"></button>
-                <button class="nav-dot" data-index="1"></button>
-                <button class="nav-dot" data-index="2"></button>
+            <div class="testimonial">
+                <p class="testimonial-text">
+                    התינוקת שלנו הייתה בת שבועיים והתמונות יצאו מדהימות. 
+                    רייזי סבלנית, מקצועית ויודעת בדיוק איך לטפל בתינוקות.
+                </p>
+                <div class="testimonial-author">
+                    <span class="author-name">מיכל לוי</span>
+                    <span class="author-role">צילומי ניו בורן</span>
+                </div>
             </div>
+            <div class="testimonial">
+                <p class="testimonial-text">
+                    הצילומים של המסעדה שלנו הביאו אלינו כל כך הרבה לקוחות חדשים! 
+                    רייזי יודעת לגרום לאוכל להיראות בלתי יאמן.
+                </p>
+                <div class="testimonial-author">
+                    <span class="author-name">דוד ישראלי</span>
+                    <span class="author-role">צילומי מזון</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="testimonials-nav">
+            <button class="nav-arrow prev">
+                <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            </button>
+            <div class="nav-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+            <button class="nav-arrow next">
+                <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
         </div>
     </section>
 
     <!-- Contact Section -->
     <section class="contact" id="contact">
-        <div class="contact-bg"></div>
-        <div class="container">
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <span class="section-tag">בואו נדבר</span>
-                    <h2 class="section-title">צור קשר</h2>
-                    <p class="contact-text">
-                        מוכנים ליצור זכרונות מושלמים? אשמח לשמוע מכם ולתאם צילום שיגרום לכם להתאהב מחדש ברגעים שלכם.
-                    </p>
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                                </svg>
-                            </div>
-                            <div class="contact-text-wrap">
-                                <span class="contact-label">טלפון</span>
-                                <a href="tel:0533133254" class="contact-value">053-313-3254</a>
-                            </div>
+        <div class="contact-bg">
+            <div class="gradient-orb orb-1"></div>
+            <div class="gradient-orb orb-2"></div>
+        </div>
+
+        <div class="contact-container">
+            <div class="contact-info">
+                <span class="section-number">04</span>
+                <h2 class="section-title large">
+                    <span>בואו</span>
+                    <span class="outline">ניצור</span>
+                    <span>קסם</span>
+                </h2>
+                
+                <p class="contact-text">
+                    מוכנים להפוך רגעים לזכרונות? אשמח לשמוע מכם
+                </p>
+
+                <div class="contact-details">
+                    <a href="tel:0533133254" class="contact-item">
+                        <div class="item-icon">
+                            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
                         </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                                    <polyline points="22,6 12,13 2,6"/>
-                                </svg>
-                            </div>
-                            <div class="contact-text-wrap">
-                                <span class="contact-label">אימייל</span>
-                                <a href="mailto:rayziha053@gmail.com" class="contact-value">rayziha053@gmail.com</a>
-                            </div>
+                        <div class="item-text">
+                            <span class="label">טלפון</span>
+                            <span class="value">053-313-3254</span>
                         </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-                                </svg>
-                            </div>
-                            <div class="contact-text-wrap">
-                                <span class="contact-label">אינסטגרם</span>
-                                <a href="#" class="contact-value">@rayzi_havlin</a>
-                            </div>
+                    </a>
+                    
+                    <a href="mailto:rayziha053@gmail.com" class="contact-item">
+                        <div class="item-icon">
+                            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" fill="none" stroke="currentColor" stroke-width="1.5"/><polyline points="22,6 12,13 2,6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
                         </div>
-                    </div>
+                        <div class="item-text">
+                            <span class="label">אימייל</span>
+                            <span class="value">rayziha053@gmail.com</span>
+                        </div>
+                    </a>
+                    
+                    <a href="https://wa.me/972533133254" class="contact-item whatsapp">
+                        <div class="item-icon">
+                            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" fill="currentColor"/></svg>
+                        </div>
+                        <div class="item-text">
+                            <span class="label">וואטסאפ</span>
+                            <span class="value">שלחו הודעה עכשיו</span>
+                        </div>
+                    </a>
                 </div>
-                <div class="contact-form-wrap">
-                    <form class="contact-form" id="contactForm">
+            </div>
+
+            <div class="contact-form-wrapper">
+                <form class="contact-form" id="contactForm">
+                    <div class="form-row">
                         <div class="form-group">
                             <input type="text" id="name" name="name" required>
                             <label for="name">שם מלא</label>
-                            <span class="form-line"></span>
+                            <span class="focus-border"></span>
                         </div>
                         <div class="form-group">
-                            <input type="email" id="email" name="email" required>
-                            <label for="email">אימייל</label>
-                            <span class="form-line"></span>
-                        </div>
-                        <div class="form-group">
-                            <input type="tel" id="phone" name="phone">
+                            <input type="tel" id="phone" name="phone" required>
                             <label for="phone">טלפון</label>
-                            <span class="form-line"></span>
+                            <span class="focus-border"></span>
                         </div>
-                        <div class="form-group">
-                            <select id="service" name="service" required>
-                                <option value="" disabled selected></option>
-                                <option value="newborn">ניו בורן</option>
-                                <option value="family">צילומי משפחה</option>
-                                <option value="food">צילומי מזון</option>
-                                <option value="business">צילום עסקי</option>
-                                <option value="chalake">צילומי חלאקה</option>
-                                <option value="other">אחר</option>
-                            </select>
-                            <label for="service">סוג הצילום</label>
-                            <span class="form-line"></span>
-                        </div>
-                        <div class="form-group">
-                            <textarea id="message" name="message" rows="4" required></textarea>
-                            <label for="message">הודעה</label>
-                            <span class="form-line"></span>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-submit">
-                            <span>שליחה</span>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <line x1="22" y1="2" x2="11" y2="13"/>
-                                <polygon points="22 2 15 22 11 13 2 9 22 2"/>
-                            </svg>
-                        </button>
-                    </form>
-                </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" required>
+                        <label for="email">אימייל</label>
+                        <span class="focus-border"></span>
+                    </div>
+                    <div class="form-group">
+                        <select id="service" name="service" required>
+                            <option value="" disabled selected></option>
+                            <option value="newborn">ניו בורן</option>
+                            <option value="family">צילומי משפחה</option>
+                            <option value="food">צילומי מזון</option>
+                            <option value="business">צילום עסקי</option>
+                            <option value="other">אחר</option>
+                        </select>
+                        <label for="service">סוג הצילום</label>
+                        <span class="focus-border"></span>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" rows="4" required></textarea>
+                        <label for="message">ספרו לי על הפרויקט</label>
+                        <span class="focus-border"></span>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        <span class="btn-text">שליחה</span>
+                        <span class="btn-loading">
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="60" stroke-dashoffset="0"><animateTransform attributeName="transform" type="rotate" from="0 12 12" to="360 12 12" dur="1s" repeatCount="indefinite"/></circle></svg>
+                        </span>
+                        <span class="btn-success">✓</span>
+                    </button>
+                </form>
             </div>
         </div>
     </section>
@@ -420,60 +551,50 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
-            <div class="footer-logo">
-                <span class="logo-text">רייזי הבלין</span>
+            <div class="footer-brand">
+                <span class="footer-logo">רייזי הבלין</span>
                 <p>לוכדת רגעים, יוצרת זכרונות</p>
             </div>
+            
             <div class="footer-links">
-                <a href="#home">בית</a>
+                <a href="#work">עבודות</a>
                 <a href="#about">אודות</a>
                 <a href="#services">שירותים</a>
-                <a href="#gallery">גלריה</a>
                 <a href="#contact">צור קשר</a>
             </div>
+            
             <div class="footer-social">
-                <a href="#" class="social-link">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                    </svg>
+                <a href="#" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
                 </a>
-                <a href="#" class="social-link">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                    </svg>
+                <a href="#" aria-label="Facebook">
+                    <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
                 </a>
-                <a href="https://wa.me/972533133254" class="social-link">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                    </svg>
+                <a href="https://wa.me/972533133254" aria-label="WhatsApp">
+                    <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
                 </a>
             </div>
         </div>
+        
         <div class="footer-bottom">
-            <p>© כל הזכויות שמורות | רייזי הבלין 2024</p>
-            <p class="footer-note">אין להעתיק, להוריד או להשתמש בתמונות ללא אישור</p>
+            <p>© 2024 רייזי הבלין. כל הזכויות שמורות.</p>
         </div>
     </footer>
 
-    <!-- Lightbox -->
-    <div class="lightbox" id="lightbox">
-        <button class="lightbox-close">&times;</button>
-        <div class="lightbox-content">
-            <img src="" alt="תמונה מוגדלת" class="lightbox-image">
+    <!-- Image Viewer -->
+    <div class="viewer" id="viewer">
+        <button class="viewer-close">&times;</button>
+        <div class="viewer-content">
+            <img src="" alt="" class="viewer-image">
         </div>
-        <button class="lightbox-nav lightbox-prev">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M15 18l-6-6 6-6"/>
-            </svg>
+        <button class="viewer-nav prev">
+            <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
         </button>
-        <button class="lightbox-nav lightbox-next">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M9 18l6-6-6-6"/>
-            </svg>
+        <button class="viewer-nav next">
+            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </button>
     </div>
 
     <script src="script.js"></script>
 </body>
 </html>
-
